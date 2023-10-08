@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+  Your Cart | E-commerce Website
+{% endblock title %}
+{% block body %}
+  <div class="container my-5">
+    <div class="my-5">
+        <h2>Your Cart</h2>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="15%">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col" align="right">Price</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart in carts %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{cart.product.name}}</td>
+                <td>
+                    <a href="{% url 'AppOrder:decrease' pk=cart.product.pk %}" class="mr-2 text-decoration-none">
+                        <span class="badge bg-secondary">
+                            <i class="fa fa-minus"></i>
+                        </span>
+                    </a>
+                    <span>{{cart.quantity}}</span>
+                    <a href="{% url 'AppOrder:increase' pk=cart.product.pk %}" class="mr-2 text-decoration-none">
+                        <span class="badge bg-secondary">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                    </a>
+                </td>
+                <td>
+                    &#2547; {{cart.get_total}}
+                </td>
+                <td><a href="{% url 'AppOrder:remove' pk=cart.product.pk %}" class="btn btn-danger btn-sm">Remove From Cart</a></td>
+              </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row"></th>
+                <td colspan="2" style="font-weight: bold;" align="right">Total:</td>
+                <td>&#2547; {{order.get_totals|floatformat:2}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td colspan="4" align="right">
+                    <a href="{% url 'AppShop:home' %}" class="btn btn-success btn-sm me-4">Continue Shopping</a>
+                    <a href="{% url 'AppPayment:checkout' %}" class="btn btn-warning btn-sm">Proceed to checkout</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+{% endblock body %}

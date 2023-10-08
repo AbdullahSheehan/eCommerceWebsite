@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+{% load counter %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container">
       <a class="navbar-brand" href="{% url 'AppShop:home' %}">Django E-Commerce Project</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +9,9 @@
         {% if user.is_authenticated %}
         <ul class="navbar-nav align-items-center gap-4">
             <li class="nav-item">
-              <a href="" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart</a>
+              <a href="{% url 'AppOrder:cart' %}" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart
+                <span class="badge bg-secondary">{{user|cart_total}}</span>
+              </a>
             </li>
             <li class="nav-item dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
