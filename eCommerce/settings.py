@@ -79,6 +79,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'eCommerce.wsgi.application'
 
 
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -95,6 +97,8 @@ DATABASES = {
 import pymysql
 pymysql.install_as_MySQLdb()
 
+# Defining Custom User Model
+AUTH_USER_MODEL = 'AppLogin.User'
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

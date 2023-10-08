@@ -2,9 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('AppShop.urls')),
     path('admin/', admin.site.urls),
     path('account/', include('AppLogin.urls')),
-    path('shop/', include('AppShop.urls')),
 ]
 
 from django.conf import settings
