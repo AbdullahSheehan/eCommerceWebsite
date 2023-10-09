@@ -6,7 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('AppLogin.urls')),
     path('shop/', include('AppOrder.urls')),
-    path('payment', include('AppPayment.urls')),
+    path('payment/', include('AppPayment.urls')),
 ]
 
 from django.conf import settings

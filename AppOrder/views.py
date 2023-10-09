@@ -32,6 +32,7 @@ def add_to_cart(req, pk):
         order = Order(user=req.user)
         order.save()
         order.orderitems.add(order_item[0])
+        print(list(order.orderitems))
         messages.info(req, 'This item was added to your cart')
         return redirect('AppShop:home')
 

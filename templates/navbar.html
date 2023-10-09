@@ -19,7 +19,7 @@
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="{% url 'AppLogin:profile' %}">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Orders</a></li>
+                    <li><a class="dropdown-item" href="{% url 'AppPayment:orders' %}">Orders</a></li>
                     <div class="dropdown-divider"></div>
                     <li><a class="dropdown-item" href="{% url 'AppLogin:logout' %}">Logout</a></li>
                   </ul>
